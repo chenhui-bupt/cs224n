@@ -1,0 +1,4 @@
+[
+  "q1_softmax.py::test_softmax_basic",
+  "q1_softmax.py::test_softmax"
+]
