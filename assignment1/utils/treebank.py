@@ -60,7 +60,7 @@ class StanfordSentiment:
 
                 splitted = line.strip().split()[1:]
                 # Deal with some peculiar encoding issues with this file
-                sentences += [[w.lower().encode('latin1') for w in splitted]]
+                sentences += [[w.lower() for w in splitted]]
 
         self._sentences = sentences
         self._sentlengths = np.array([len(s) for s in sentences])
@@ -123,7 +123,6 @@ class StanfordSentiment:
                 splitted = line.split("|")
                 dictionary[splitted[0].lower()] = int(splitted[1])
                 phrases += 1
-
         labels = [0.0] * phrases
         with open(self.path + "/sentiment_labels.txt", "r") as f:
             first = True
