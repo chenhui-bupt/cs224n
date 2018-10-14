@@ -5,3 +5,5 @@ assignment1/log.txt
 assignment1/saved*
 .idea
 */.idea
+*.zip
+assignment2/data/weights
