@@ -45,7 +45,7 @@ def forward_backward_prop(X, labels, params, dimensions):
     ### END YOUR CODE
 
     ### YOUR CODE HERE: backward propagation
-    cost = np.sum(-np.log(y_[labels==1])) / X.shape[0]
+    cost = np.sum(-np.log(y_[labels == 1])) / X.shape[0]
     delta1 = (y_ - labels) / X.shape[0]  # [M, Dy]
     gradW2 = np.dot(np.transpose(hidden), delta1)  # [H, Dy]
     gradb2 = np.sum(delta1, axis=0, keepdims=True)  # [1, Dy]
@@ -67,17 +67,18 @@ def sanity_check():
     Set up fake data and parameters for the neural network, and test using
     gradcheck.
     """
-    print("Running sanity check...")
+    print "Running sanity check..."
 
     N = 20
     dimensions = [10, 5, 10]
     data = np.random.randn(N, dimensions[0])   # each row will be a datum
     labels = np.zeros((N, dimensions[2]))
-    for i in range(N):
+    for i in xrange(N):
         labels[i, random.randint(0,dimensions[2]-1)] = 1
 
     params = np.random.randn((dimensions[0] + 1) * dimensions[1] + (
         dimensions[1] + 1) * dimensions[2], )
+
     gradcheck_naive(lambda params:
         forward_backward_prop(data, labels, params, dimensions), params)
 
@@ -89,7 +90,7 @@ def your_sanity_checks():
     This function will not be called by the autograder, nor will
     your additional tests be graded.
     """
-    print("Running your sanity checks...")
+    print "Running your sanity checks..."
     ### YOUR CODE HERE
     # raise NotImplementedError
     ### END YOUR CODE
